@@ -1,6 +1,6 @@
 import "./PlaceDetails.scss";
-import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip } from "@mui/material";
-import Rating from '@mui/material/Rating';
+import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip} from "@mui/material";
+import Rating from "@mui/material/Rating";
 import { classes } from "istanbul-lib-coverage";
 import LocationIcon from "../../assets/location.png";
 import PhoneIcon from "../../assets/phone.png";
@@ -19,6 +19,8 @@ export default function PlaceDetails({place}){
             />
             <CardContent>
                 <h2>{place.name}</h2>
+                <div><Rating size="small" value={Number(place.rating)} readOnly/></div>
+                <h4>Out of {place.num_reviews} reviews</h4>
                 <h4>Price</h4>
                 <p>{place.price_level}</p>
                 <h4>Ranking</h4>
