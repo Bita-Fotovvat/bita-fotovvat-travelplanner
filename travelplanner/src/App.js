@@ -10,8 +10,17 @@ import { getPlacesData } from './api/index';
 
 export default function App() {
   const [places, setPlaces] = useState([]);
+  const [filteredPlaces, setFilteredPlaces] = useState([]);
+
+
+  const [childClicked, setChildClicked] = useState(null);
+
   const [coordinates, setCoordinates] = useState({});
   const [bounds, setBounds] = useState(null);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [type, setType] = useState('restaurants');
+  const [rating, setRating] = useState('');
 
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}})=>{
@@ -19,35 +28,53 @@ export default function App() {
     })
   }, []);
 
+  useEffect(()=>{
+    const filteredPlaces = places.filter((place)=> place.rating > rating)
+    setFilteredPlaces(filteredPlaces);
+  },[rating]);
+
 
   useEffect(()=>{
-    console.log(coordinates, bounds);
+    // console.log(coordinates, bounds);
     if (bounds && bounds.sw && bounds.ne) {
-      getPlacesData(bounds.sw, bounds.ne)
+      setIsLoading(true);
+
+      getPlacesData(type, bounds.sw, bounds.ne)
+
       .then((data)=>{
-      
         console.log(data);
         setPlaces(data);
+        setFilteredPlaces([]);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Failed to fetch places data:", error);
       });
   }
-  }, [coordinates, bounds]);
+  }, [type, coordinates, bounds]);
 
   return (
     <BrowserRouter>
-    <Header/>
-    <Map 
-      setCoordinates = {setCoordinates}
-      setBounds = {setBounds}
-      coordinates = {coordinates}
-      places = {places}
-    />
-    <List places={places}/>
-    <Routes>
-      <Route path="/" element={<HomePage/>}/>
-    </Routes>
+      <Header/>
+      <Map 
+          setCoordinates = {setCoordinates}
+          setBounds = {setBounds}
+          coordinates = {coordinates}
+          places = {filteredPlaces.length ? filteredPlaces : places}
+          setChildClicked = {setChildClicked}
+      />
+      <List 
+          places={filteredPlaces.length ? filteredPlaces : places}
+          childClicked={childClicked}
+          isLoading={isLoading}
+          type = {type}
+          setType = {setType}
+          rating = {rating}
+          setRating = {setRating}
+      />
+      <Routes>
+          <Route path="/" element={<HomePage/>}/>
+      </Routes>
     </BrowserRouter>
   );
 }

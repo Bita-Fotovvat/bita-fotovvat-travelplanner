@@ -5,12 +5,11 @@ import Rating from "@mui/material/Rating";
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 
 
-export default function Map({setCoordinates, setBounds, coordinates, places}){
+export default function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }){
 
     // const coordinates = { lat: 0, lng: 0};
     // const API_KEY = AIzaSyAb4K_QXu9ej6UO3vTvykrZTMm31zRjQGA;
     const isDesktop = useMediaQuery('(min-width:600px)');
-    // const [childClicked, setChildClicked] = useState(null);
 
     return(
         <>
@@ -29,7 +28,7 @@ export default function Map({setCoordinates, setBounds, coordinates, places}){
                     setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw});
 
                 }}
-                inChildClick={(child)=>{}}
+                onChildClick={(child)=>{setChildClicked(child)}}
                 >
                    {places?.map((place, i)=>(
                     <div

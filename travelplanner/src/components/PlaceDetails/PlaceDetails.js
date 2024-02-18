@@ -5,7 +5,9 @@ import { classes } from "istanbul-lib-coverage";
 import LocationIcon from "../../assets/location.png";
 import PhoneIcon from "../../assets/phone.png";
 
-export default function PlaceDetails({place}){
+export default function PlaceDetails({place, selected, refProp}){
+
+    if(selected) refProp?.current?.scrollIntoView({ behavior:"smooth", block:"start"}) //
 
     return(
         <>
