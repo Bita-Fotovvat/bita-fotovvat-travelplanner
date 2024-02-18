@@ -7,17 +7,17 @@ import PlaceDetails from "../../components/PlaceDetails/PlaceDetails";
 import Grid from "@mui/system/Unstable_Grid/Grid";
 import {useState} from 'react';
 
-export default function List(){
+export default function List({places}){
     const [type, setType] = useState('restaurants');
     const [rating, setRating] = useState('');
-    const places = [
-        {name: 'cool place'},
-        {name: 'best beer'},
-        {name: 'best steak'},
-        {name: 'cool place'},
-        {name: 'best beer'},
-        {name: 'best steak'},
-    ];
+    // const places = [
+    //     {name: 'cool place'},
+    //     {name: 'best beer'},
+    //     {name: 'best steak'},
+    //     {name: 'cool place'},
+    //     {name: 'best beer'},
+    //     {name: 'best steak'},
+    // ];
 
     return(
         <>
