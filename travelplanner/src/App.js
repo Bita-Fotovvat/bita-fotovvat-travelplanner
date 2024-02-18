@@ -39,9 +39,10 @@ export default function App() {
     <BrowserRouter>
     <Header/>
     <Map 
-    setCoordinates = {setCoordinates}
-    setBounds = {setBounds}
-    coordinates = {coordinates}
+      setCoordinates = {setCoordinates}
+      setBounds = {setBounds}
+      coordinates = {coordinates}
+      places = {places}
     />
     <List places={places}/>
     <Routes>
