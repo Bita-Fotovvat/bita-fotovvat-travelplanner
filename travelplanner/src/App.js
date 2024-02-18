@@ -22,13 +22,17 @@ export default function App() {
 
   useEffect(()=>{
     console.log(coordinates, bounds);
-    getPlacesData(bounds.sw, bounds.ne)
-    .then((data)=>{
+    if (bounds && bounds.sw && bounds.ne) {
+      getPlacesData(bounds.sw, bounds.ne)
+      .then((data)=>{
       
-      console.log(data);
-      setPlaces(data);
-    }
-    )
+        console.log(data);
+        setPlaces(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch places data:", error);
+      });
+  }
   }, [coordinates, bounds]);
 
   return (
