@@ -1,4 +1,5 @@
 import "./SearchBar.scss";
+import { usePlaces } from '../../context/PlacesContext';
 import {useState} from 'react';
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -10,7 +11,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Autocomplete } from '@react-google-maps/api';
 
 
-export default function SearchBar({setCoordinates}){
+export default function SearchBar(){
+    const { setCoordinates } = usePlaces();
+
+
     const [autocomplete, setAutocomplete] = useState(null);
     
     const onLoad = (autoC)=> setAutocomplete(autoC);
@@ -34,5 +38,5 @@ export default function SearchBar({setCoordinates}){
                 </Box>
             </Toolbar>
         </AppBar>
-    )
+    );
 }

@@ -1,12 +1,20 @@
 import "./Map.scss";
 import GoogleMapReact from 'google-map-react';
+import { usePlaces } from '../../context/PlacesContext';
 import {Paper, Typography, useMediaQuery} from '@mui/material';
 import Rating from "@mui/material/Rating";
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 
 
-export default function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }){
 
+// const handleChange = (e) => {
+//     setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+//     setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+// };
+
+export default function Map(){
+
+    const { setCoordinates, setBounds, coordinates, places, setChildClicked } = usePlaces();
     // const coordinates = { lat: 0, lng: 0};
     // const API_KEY = AIzaSyAb4K_QXu9ej6UO3vTvykrZTMm31zRjQGA;
     const isDesktop = useMediaQuery('(min-width:600px)');

@@ -1,4 +1,5 @@
 import "./List.scss";
+import { usePlaces } from '../../context/PlacesContext';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -8,8 +9,8 @@ import PlaceDetails from "../../components/PlaceDetails/PlaceDetails";
 import Grid from "@mui/system/Unstable_Grid/Grid";
 import {useState, useEffect, createRef} from 'react';
 
-export default function List({places, childClicked, isLoading, type, setType, rating, setRating}){
-
+export default function List(){
+    const {places, childClicked, isLoading, type, setType, rating, setRating} = usePlaces();
     const [elRefs, setElRefs] = useState([]);
 
     useEffect(() => {

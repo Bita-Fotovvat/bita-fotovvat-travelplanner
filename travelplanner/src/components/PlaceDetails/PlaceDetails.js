@@ -45,10 +45,6 @@ export default function PlaceDetails({place, selected, refProp}){
                 <button onClick={()=> window.open(place.website, '_blank')}>Website</button>
             </CardContent>
         </Card>
-
-
-
-
         </>
     );
 }
