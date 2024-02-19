@@ -2,6 +2,7 @@ import './App.scss';
 import {useState, useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
+import SearchBar from "./components/SearchBar/SearchBar";
 import HomePage from "./pages/HomePage/HomePage";
 import Map from "./components/Map/Map";
 import List from "./components/List/List";
@@ -41,11 +42,11 @@ export default function App() {
 
       getPlacesData(type, bounds.sw, bounds.ne)
 
-      .then((data)=>{
-        console.log(data);
-        setPlaces(data);
-        setFilteredPlaces([]);
-        setIsLoading(false);
+        .then((data)=>{
+          console.log(data);
+          setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
+          setFilteredPlaces([]);
+          setIsLoading(false);
       })
       .catch((error) => {
         console.error("Failed to fetch places data:", error);
@@ -56,6 +57,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Header/>
+      <SearchBar setCoordinates={setCoordinates}/>
       <Map 
           setCoordinates = {setCoordinates}
           setBounds = {setBounds}
