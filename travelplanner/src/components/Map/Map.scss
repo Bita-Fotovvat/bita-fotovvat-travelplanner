@@ -1,8 +1,23 @@
+@use "../../styles/partials/variables" as *;
+// @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/_global" as *;
+
 .map__container{
-    height: 400px;
-    width: 70%;
+    // height: 400px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    @media (min-width: 400px) {
+        aspect-ratio: 16 / 9;
+    }
+    @media (min-width: 900px) {
+        height: 500px;
+    }
 }
 .marker__cardimg{
     height: 60px;
     // width: 70%;
 }
+// .gm-control-active{
+//     height: 20px;
+// }

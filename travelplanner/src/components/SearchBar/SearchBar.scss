@@ -1,0 +1,58 @@
+@use "../../styles/partials/variables" as *;
+// @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/_global" as *;
+
+.searchbar{
+    &background{
+        width: 100%;
+    }
+    &__label{
+       font-size: 0.9rem;
+       margin-bottom: 0.3rem;
+       @include tablet-and-desktop{
+        font-size: 1rem;
+    }
+    }
+    &__input{
+        width: 135%;
+        height: 4vh;
+        border-radius: 4px;
+        border: 2px solid $searchbar-blue;
+        background-image: url(../../assets/icons/search.svg);
+        background-repeat: no-repeat;
+        background-position: 7px;
+        padding-left: 1.875rem;
+        font-size: 0.75rem;
+        &::placeholder{
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding-left: 0.5rem;
+            @include tablet-and-desktop{
+                font-size: 0.9rem;
+            }
+        }
+        @include tablet-and-desktop{
+            margin-left: 1rem;
+            height: 5.5vh;
+        }
+    }
+    &__box{
+        padding-top: 0.7rem;
+    }
+}
+.MuiBox-root{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    height: 10vh;
+    // gap: 5px;
+    @include tablet-and-desktop{
+        padding-left: 3rem;
+        flex-direction: row;
+        justify-content: unset;
+    }
+}
+.MuiToolbar-root{
+    background-color: lightseagreen;
+}

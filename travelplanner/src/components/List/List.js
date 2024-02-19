@@ -21,7 +21,7 @@ export default function List({places, childClicked, isLoading, type, setType, ra
 
     return(
         <div>
-        <h1>Hotels, Restaurants & Attractions</h1>
+        <h1 className="list__title">Hotels, Restaurants & Attractions</h1>
         {isLoading ? (
             <div>
                 <CircularProgress size="5rem" />
@@ -29,11 +29,11 @@ export default function List({places, childClicked, isLoading, type, setType, ra
         ) : (
             <>
         <FormControl className="form__parent">
-            <InputLabel>Type</InputLabel>
+            {/* <InputLabel>Type</InputLabel> */}
             <Select value={type} onChange={(e)=> setType(e.target.value)}>
-                <MenuItem value="restaurants">Restaurants</MenuItem>
-                <MenuItem value="hotels">Hotels</MenuItem>
-                <MenuItem value="attractions">Attractions</MenuItem>
+                <MenuItem className="form__options" value="restaurants">Restaurants</MenuItem>
+                <MenuItem className="form__options" value="hotels">Hotels</MenuItem>
+                <MenuItem className="form__options" value="attractions">Attractions</MenuItem>
             </Select>
         </FormControl>
         <FormControl className="form__parent">

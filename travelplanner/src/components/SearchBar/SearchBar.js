@@ -21,14 +21,14 @@ export default function SearchBar({setCoordinates}){
     }
 
     return(
-        <AppBar position="static">
-            <Toolbar >
-                <h3>Travel Planner</h3>
-                <Box display="flex">
-                    <label>Explore new places</label>
+        <AppBar className="searchbar__background" position="static">
+            <Toolbar>
+                {/* <h3>Travel Planner</h3> */}
+                <Box className="searchbar__box">
+                    <label className="searchbar__label">Explore new places</label>
                     <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
-                    <form className="form">
-                        <input type="search" className="form__input" placeholder="Search"/>
+                    <form  className="searchbar__form">
+                        <input type="search" className="searchbar__input" placeholder="Search"/>
                     </form>
                     </Autocomplete>
                 </Box>
