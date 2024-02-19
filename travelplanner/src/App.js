@@ -3,10 +3,9 @@ import {useState, useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PlacesProvider } from './context/PlacesContext';
 import Header from './components/Header/Header';
-import SearchBar from "./components/SearchBar/SearchBar";
 import HomePage from "./pages/HomePage/HomePage";
-import Map from "./components/Map/Map";
-import List from "./components/List/List";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import { getPlacesData } from './api/index';
 
 
@@ -88,6 +87,8 @@ return (
       <Routes>
         <Route path="/" element={<HomePage />} />
         {/* Add more routes as needed */}
+        <Route path="/profile" element={<DashboardPage/>} />
+        <Route path="/login" element={<LoginPage/>} /> 
       </Routes>
     </BrowserRouter>
   </PlacesProvider>
