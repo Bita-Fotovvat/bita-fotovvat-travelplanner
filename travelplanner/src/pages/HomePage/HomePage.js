@@ -34,7 +34,7 @@ const {
         }, []);
       
         useEffect(()=>{
-          const filteredPlaces = places.filter((place)=> place.rating > rating)
+          const filteredPlaces = places.filter((place)=> place.rating > rating) //Number(place.rating)
           setFilteredPlaces(filteredPlaces);
         },[rating]);
       
@@ -50,6 +50,7 @@ const {
                 console.log(data);
                 setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
                 setFilteredPlaces([]);
+                // setRating('');
                 setIsLoading(false);
             })
             .catch((error) => {
@@ -74,7 +75,7 @@ const {
     return(
     <>
       <SearchBar />
-      <Map />
+      <Map/>
       <List />
     </>
     )

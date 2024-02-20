@@ -4,8 +4,12 @@
 @use "../../styles/partials/_global" as *;
 
 .map__container{
+    margin: auto;
+    width: 95%;
+    border-radius: 4px;
+    // box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     // height: 400px;
-    width: 100%;
+    // width: 100%;
     aspect-ratio: 1 / 1;
     @media (min-width: 400px) {
         aspect-ratio: 16 / 9;
@@ -14,10 +18,35 @@
         height: 500px;
     }
 }
-.marker__cardimg{
-    height: 60px;
-    // width: 70%;
+.marker{
+    // transition: transform 0.3s ease;
+    &__cards{
+        border-radius: 4px;
+        width: 100px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.5); // Optional: Add shadow for better visibility
+        transition: box-shadow 0.3s ease;
+        position: relative;
+        z-index: 1; // Default z-index
+        &:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.8); // Optional: Increase shadow on hover
+            z-index: 999; // Default z-index
+        }
+    }
+    &__img{
+        height: 80px;
+        padding-left: 10px;
+        aspect-ratio: 1.1 / 1;
+    }
+    &__title{
+        font-size: 0.9rem;
+        padding-left: 0.5rem;
+        font-weight: 400;
+        width: 90px;
+        // background-color: white;
+        border-radius: 4px;
+    }
+    &__rating{
+        padding-left: 0.3rem;
+    }
 }
-// .gm-control-active{
-//     height: 20px;
-// }

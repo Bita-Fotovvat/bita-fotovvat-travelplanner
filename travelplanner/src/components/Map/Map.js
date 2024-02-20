@@ -6,7 +6,6 @@ import Rating from "@mui/material/Rating";
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 
 
-
 // const handleChange = (e) => {
 //     setCoordinates({ lat: e.center.lat, lng: e.center.lng });
 //     setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
@@ -49,15 +48,15 @@ export default function Map(){
                         !isDesktop ? (
                             <LocationOnOutlinedIcon />
                         ) : (
-                            <Paper elevation={3} className="marker__cards">
-                                <Typography className="class" varient="subtitle2" gutterBottom>{place.name}</Typography>
+                            <div className="marker__cards">
+                                <h4 className="marker__title" gutterBottom>{place.name}</h4>
                                 <img 
-                                className="marker__cardimg"
+                                className="marker__img"
                                 src={place.photo ? place.photo.images.large.url : 'https://toohotel.com/wp-content/uploads/2022/09/TOO_restaurant_Panoramique_vue_Paris_nuit_v2-scaled.jpg'}
                                 alt={place.name}
                                 />
-                                <Rating size="small" value={Number(place.rating)} readOnly/>
-                            </Paper>
+                                <Rating className="marker__rating" size="small" value={Number(place.rating)} readOnly/>
+                            </div>
                         )
                        }
                     </div>

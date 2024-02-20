@@ -4,15 +4,23 @@
 @use "../../styles/partials/_global" as *;
 
 .list{
+    margin: auto;
+    width: 95%;
     &__title{
-        font-size: 1rem;
-        padding-top: 1rem;
+        font-size: 1.5rem;
+        padding-top: 3rem;
         padding-bottom: 1rem;
     }
 }
 .form{
     &__options{
         height: 1rem;
+    }
+}
+.card{
+    &__container{
+        height: 500px; /* Adjust the height as needed */
+        overflow-y: auto;
     }
 }
 // .MuiFormLabel-root{

@@ -21,7 +21,7 @@ export default function PlaceDetails({place, selected, refProp}){
             />
             <CardContent>
                 <h2>{place.name}</h2>
-                <div><Rating size="small" value={Number(place.rating)} readOnly/></div>
+                <div className="card__rating"><Rating size="small" value={Number(place.rating)} readOnly/></div>
                 <h4>Out of {place.num_reviews} reviews</h4>
                 <h4>Price</h4>
                 <p>{place.price_level}</p>

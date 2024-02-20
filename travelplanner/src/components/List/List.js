@@ -13,6 +13,7 @@ export default function List(){
     const {places, childClicked, isLoading, type, setType, rating, setRating} = usePlaces();
     const [elRefs, setElRefs] = useState([]);
 
+    console.log({childClicked});
     useEffect(() => {
         setElRefs((prevRefs) => {
             return Array(places?.length).fill().map((_, i) => prevRefs[i] || createRef());
@@ -21,7 +22,7 @@ export default function List(){
     
 
     return(
-        <div>
+        <div className="list">
         <h1 className="list__title">Hotels, Restaurants & Attractions</h1>
         {isLoading ? (
             <div>
@@ -30,7 +31,7 @@ export default function List(){
         ) : (
             <>
         <FormControl className="form__parent">
-            {/* <InputLabel>Type</InputLabel> */}
+            <h4>Type</h4>
             <Select value={type} onChange={(e)=> setType(e.target.value)}>
                 <MenuItem className="form__options" value="restaurants">Restaurants</MenuItem>
                 <MenuItem className="form__options" value="hotels">Hotels</MenuItem>
@@ -38,7 +39,7 @@ export default function List(){
             </Select>
         </FormControl>
         <FormControl className="form__parent">
-            <InputLabel>Rating</InputLabel>
+            <h4>Rating</h4>
             <Select value={rating} onChange={(e)=> setRating(e.target.value)}>
                 <MenuItem value={0}>All</MenuItem>
                 <MenuItem value={3}>Above 3.0</MenuItem>
@@ -46,7 +47,8 @@ export default function List(){
                 <MenuItem value={4.5}>Above 4.5</MenuItem>
             </Select>
         </FormControl>
-        <section className="cards">
+    <div className="card__container">
+        <section className="card__item">
             {places?.map((place, i)=>(
                 <Grid item key={i}>
                     <PlaceDetails
@@ -57,6 +59,8 @@ export default function List(){
                 </Grid>
             ))}
         </section>
+    </div>
+
         </>
         )}
         </div>
