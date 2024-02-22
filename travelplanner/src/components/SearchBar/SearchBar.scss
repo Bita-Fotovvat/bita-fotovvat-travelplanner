@@ -8,8 +8,10 @@
         // width: 100%;
     }
     &__label{
-        color: black;
+        padding-top: 0.2rem;
+       color: $color-one;
        font-size: 0.9rem;
+       font-weight: 600;
        margin-bottom: 0.3rem;
        @include tablet-and-desktop{
         font-size: 1rem;
@@ -19,7 +21,7 @@
         width: 135%;
         height: 4vh;
         border-radius: 4px;
-        border: 2px solid $searchbar-blue;
+        border: 2px solid $color-one;
         background-image: url(../../assets/icons/search.svg);
         background-repeat: no-repeat;
         background-position: 7px;

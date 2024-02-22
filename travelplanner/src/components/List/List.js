@@ -7,12 +7,21 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import PlaceDetails from "../../components/PlaceDetails/PlaceDetails";
 import Grid from "@mui/system/Unstable_Grid/Grid";
-import {useState, useEffect, createRef} from 'react';
+import {useState, useEffect, createRef} from 'react'; //craeteRef
+import { useAuth } from '../../context/AuthContext';
+
 
 export default function List(){
     const {places, childClicked, isLoading, type, setType, rating, setRating} = usePlaces();
     const [elRefs, setElRefs] = useState([]);
+    const { isLoggedIn } = useAuth();
 
+    // const handleSaveToFavourites = (place) => {
+    //     // Placeholder for saving logic
+    //     console.log('Saving to favourites:', place);
+    //     // Here you would likely update some state or make an API call
+    //   };
+      
     console.log({childClicked});
     useEffect(() => {
         setElRefs((prevRefs) => {
@@ -56,6 +65,12 @@ export default function List(){
                     selected={Number(childClicked)=== i }
                     refProp={elRefs[i]}
                     />
+                {isLoggedIn && (
+                    // <button onClick={() => handleSaveToFavourites(place)}>
+                    <button>
+                    Save
+                    </button>
+                )}
                 </Grid>
             ))}
         </section>

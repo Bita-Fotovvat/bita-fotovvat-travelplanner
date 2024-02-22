@@ -1,3 +1,48 @@
-main p span {
-    color: rgb(76, 76, 110);
+@use "../../styles/partials/variables" as *;
+// @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/_global" as *;
+
+.profile{
+    background-image: url(../../assets/images/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 3rem;
+    &__title{
+        font-size: 1.5rem;
+        color: white;
+        text-align: center;
+        padding-top: 2rem;
+        padding-bottom:  1rem;
+    }
+    &__greeting{
+        font-size: 1rem;
+        color: white;
+        text-align: center;
+        padding-bottom: 2rem;
+    }
+    &__favheader{
+        color: white;
+        text-align: center;
+        padding-bottom: 2rem;
+    }
+    &__favourites{
+        width: 60vw;
+        height: 40vh;
+        margin: auto;
+        background-color: rgb(177, 221, 223);
+        margin-bottom: 3rem;
+    }
+    &__logout{
+        margin-top: 2rem;
+        display: block;
+        margin: auto;
+        border-radius: 4px;
+        border: 1px solid rgb(30, 124, 124);
+        background-color: rgb(30, 124, 124);
+        color: white;
+        font-size: 1rem;
+        width: 8rem;
+        height: 2rem;
+    }
 }

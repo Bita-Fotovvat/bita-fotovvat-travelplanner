@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 const AuthContext = createContext();
 
@@ -11,13 +12,30 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const token = sessionStorage.getItem("token");
-        setIsLoggedIn(!!token);
-        if (token) {
-            // Here you would ideally fetch user details from the backend
-            // For simplicity, we are just assuming user is logged in
-            setUser({ name: "User" }); // Placeholder for actual user data
-        }
+        const fetchUserProfile = async () => {
+            const token = sessionStorage.getItem("token");
+            if (!token) {
+                setIsLoggedIn(false);
+                setUser(null);
+                return;
+            }
+
+            try {
+                const { data } = await axios.get("http://localhost:8080/profile", {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                setIsLoggedIn(true);
+                setUser(data);
+            } catch (error) {
+                console.error("Error fetching user profile:", error);
+                setIsLoggedIn(false);
+                setUser(null);
+            }
+        };
+
+        fetchUserProfile();
     }, []);
 
     const logout = () => {

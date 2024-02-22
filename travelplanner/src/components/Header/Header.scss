@@ -1,0 +1,29 @@
+@use "../../styles/partials/variables" as *;
+// @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/_global" as *;
+
+.header{
+    background-color: $color-one;
+    height: 3rem;
+    &__navli{
+        padding-top: 1rem;
+        padding-left: 2rem;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        &--item{
+            color: white;
+            list-style-type: none;
+            &:hover{
+                font-weight: 600;
+                border-bottom: 3px solid white;
+                padding-bottom: 0.7rem;
+            }
+        }
+        &--link{
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
