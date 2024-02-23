@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./DashboardPage.scss";
 import axios from "axios";
+import FavouritesList from "../../components/FavouritesList/FavouritesList";
 
 export default function DashboardPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,7 +21,7 @@ export default function DashboardPage() {
 
         const getCurrentUser = async () => {
             try {
-                const { data } = await axios.get("http://localhost:8080/profile", {
+                const { data } = await axios.get("http://localhost:8080/users/profile", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -64,7 +65,9 @@ export default function DashboardPage() {
             <h1 className="profile__title"> Profile </h1>
             <p className="profile__greeting">Welcome, {user.name}!</p>
             <h3 className="profile__favheader">Your Favourites: </h3>
-            <div className="profile__favourites"></div>
+            <div className="profile__favourites">
+                <FavouritesList />
+            </div>
             <button  className="profile__logout" onClick={handleLogout}>
                 Log out
             </button>

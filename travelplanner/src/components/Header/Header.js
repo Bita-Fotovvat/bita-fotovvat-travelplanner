@@ -10,7 +10,7 @@ export default function Header() {
         <header className="header">
             <nav className="header__nav">
                 <ul className="header__navli">
-                    <li className="header__navli--item"><Link className="header__navli--link" activeClassName="active" to="/">Home</Link></li>
+                    <li className="header__navli--item"><Link className="header__navli--link" to="/">Home</Link></li>
                     {isLoggedIn ? (
                         <>
                             <li className="header__navli--item"><Link className="header__navli--link"  to="/profile">My Profile</Link></li>

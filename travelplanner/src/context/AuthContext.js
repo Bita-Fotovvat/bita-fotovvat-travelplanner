@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
             }
 
             try {
-                const { data } = await axios.get("http://localhost:8080/profile", {
+                const { data } = await axios.get("http://localhost:8080/users/profile", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

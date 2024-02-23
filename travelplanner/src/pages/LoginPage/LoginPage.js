@@ -13,7 +13,7 @@ export default function LoginPage() {
         const login = async () => {
             try {
                 //getting the token
-                const { data } = await axios.post("http://localhost:8080/login", {
+                const { data } = await axios.post("http://localhost:8080/users/login", {
                     username: event.target.username.value,
                     password: event.target.password.value
                 });
