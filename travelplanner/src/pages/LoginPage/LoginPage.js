@@ -3,15 +3,18 @@ import Input from "../../components/Input/Input";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext'; ////NEW
 
 export default function LoginPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
+    const { login } = useAuth(); ////////NEW
     
     const handleSubmit = (event) => {
         event.preventDefault();
        
-        const login = async () => {
+        //////////////////login=> loginUser
+        const loginUser = async () => {
             try {
                 const { data } = await axios.post("http://localhost:8080/users/login", {
                     username: event.target.username.value,
@@ -19,6 +22,7 @@ export default function LoginPage() {
                 });
                 
                 console.log(`This is what we want: `, data.userid);
+                login(data); 
                 sessionStorage.setItem("token", data.token);
                 sessionStorage.setItem("userid", data.userid); // Store userid in session storage
                 navigate("/");
@@ -28,7 +32,7 @@ export default function LoginPage() {
             }
         }
 
-        login();
+        loginUser();
     };
 
     return (

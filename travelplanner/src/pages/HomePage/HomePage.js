@@ -1,5 +1,6 @@
 import "./HomePage.scss";
 import React, { useEffect } from 'react';
+import {useState} from 'react';
 import { usePlaces } from '../../context/PlacesContext';
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Map from "../../components/Map/Map";
@@ -11,7 +12,7 @@ export default function HomePage(){
 
 
 
-
+const [childClicked, setChildClicked] = useState(null);
 const {
     places, setPlaces,
     filteredPlaces, setFilteredPlaces,
@@ -75,8 +76,11 @@ const {
     return(
     <>
       <SearchBar />
-      <Map/>
-      <List />
+      <Map
+      setChildClicked={setChildClicked}/>
+      <List 
+      childClicked={childClicked}/>
+      isLoading={isLoading}
     </>
     )
 }

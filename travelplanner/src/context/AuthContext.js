@@ -12,6 +12,17 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [userId, setUserId] = useState(sessionStorage.getItem("userid")); // Initialize from session storage
 
+
+    /////////////////////////////////NEW
+    const login = (userData) => {
+        setIsLoggedIn(true);
+        setUser(userData);
+        setUserId(userData.userid); // Assuming the userID is part of the userData object
+        sessionStorage.setItem("token", userData.token);
+        sessionStorage.setItem("userid", userData.userid);
+    };
+    ///////////////////////////////////////
+
     useEffect(() => {
         const fetchUserProfile = async () => {
             const token = sessionStorage.getItem("token");
@@ -52,7 +63,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, user, userId, logout }}>
+        <AuthContext.Provider value={{ isLoggedIn, user, userId, logout, login }}>
             {children}
         </AuthContext.Provider>
     );

@@ -13,14 +13,42 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 import { getPlacesData } from '../../api/index'; //my api call 
 
-export default function List(){
-    const {places, childClicked, isLoading, type, setType, rating, setRating} = usePlaces();
+export default function List({childClicked , isLoading}){
+    const {places, type, setType, rating, setRating} = usePlaces();
     const [elRefs, setElRefs] = useState([]);
     const { isLoggedIn, user } = useAuth();
     const [favourite, setFavourite] = useState('');
+    const [displayedPlaces, setDisplayedPlaces] = useState([]);////////////NPP
+
+    console.log({childClicked});
+    // useEffect(() => {
+    //     setElRefs((prevRefs) => {
+    //         return Array(places?.length).fill().map((_, i) => prevRefs[i] || createRef());
+    //     });
+    // }, [places]); /////////////////////////NEW
+
+    useEffect(() => {
+        const refs = Array(places?.length).fill().map((_,i)=> elRefs[i] || createRef());
+        setElRefs(refs);
+    }, [places]);
+
+//////////////////////////////////////NPP
+useEffect(() => {
+    if (childClicked !== null && places.length > 0) {
+        const clickedPlace = places[childClicked];
+        const otherPlaces = places.filter((_, index) => index !== childClicked);
+        setDisplayedPlaces([clickedPlace, ...otherPlaces]);
+    } else {
+        setDisplayedPlaces(places); // Fallback to original order if no child is clicked
+    }
+}, [childClicked, places]);
+////////////////NPP
 
 
 
+
+
+// console.log({childClicked});
 ///////////////////////////////////
 // getPlacesData(type, bounds.sw, bounds.ne)
       
@@ -79,12 +107,7 @@ try {
 
 
       
-    console.log({childClicked});
-    useEffect(() => {
-        setElRefs((prevRefs) => {
-            return Array(places?.length).fill().map((_, i) => prevRefs[i] || createRef());
-        });
-    }, [places]);
+
     
 
     return(
@@ -115,7 +138,7 @@ try {
         </FormControl>
     <div className="card__container">
         <section className="card__item">
-            {places?.map((place, i)=>(
+            {displayedPlaces?.map((place, i)=>(    /////places=>displayedPlaces////NPP
                 <Grid item key={i}>
                     <PlaceDetails
                     place={place}
