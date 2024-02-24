@@ -10,6 +10,7 @@ export function useAuth() {
 export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
+    const [userId, setUserId] = useState(sessionStorage.getItem("userid")); // Initialize from session storage
 
     useEffect(() => {
         const fetchUserProfile = async () => {
@@ -17,6 +18,7 @@ export const AuthProvider = ({ children }) => {
             if (!token) {
                 setIsLoggedIn(false);
                 setUser(null);
+                setUserId(null); // Reset userId when there's no token
                 return;
             }
 
@@ -26,12 +28,15 @@ export const AuthProvider = ({ children }) => {
                         Authorization: `Bearer ${token}`,
                     },
                 });
+                console.log(data.userid);
                 setIsLoggedIn(true);
                 setUser(data);
+                setUserId(data.userid); // Save the userid from response
             } catch (error) {
                 console.error("Error fetching user profile:", error);
                 setIsLoggedIn(false);
                 setUser(null);
+                setUserId(null); // Reset userId on error
             }
         };
 
@@ -40,12 +45,14 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         sessionStorage.removeItem("token");
+        sessionStorage.removeItem("userid"); // Make sure to remove userId from session storage
         setIsLoggedIn(false);
         setUser(null);
+        setUserId(null); // Reset userId on logout
     };
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, user, logout }}>
+        <AuthContext.Provider value={{ isLoggedIn, user, userId, logout }}>
             {children}
         </AuthContext.Provider>
     );

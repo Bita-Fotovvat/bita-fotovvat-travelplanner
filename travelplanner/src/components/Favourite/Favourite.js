@@ -4,14 +4,17 @@ export default function Favourite(props){
     return(
         <>
         <article className="favourite__section">
-            <h3>Location Id</h3>
-            <div>{props.favourite.location_id}</div>
+            <h3>Category</h3>
+            <div>{props.favourite.category}</div>
 
-            <h3>Type</h3>
-            <div>{props.favourite.type}</div>
+            <h3>Name</h3>
+            <div>{props.favourite.name}</div>
 
-            {/* <h3>My Notes</h3>
-            <div>{props.favourite.user_notes}</div> */}
+            <h3>Address</h3>
+            <div>{props.favourite.address}</div>
+
+            <h3>Phone</h3>
+            <div>{props.favourite.phone}</div>
         </article>
         </>
 

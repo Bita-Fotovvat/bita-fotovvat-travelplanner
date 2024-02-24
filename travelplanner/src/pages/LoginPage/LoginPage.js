@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function LoginPage() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
     
     const handleSubmit = (event) => {
@@ -12,15 +13,14 @@ export default function LoginPage() {
        
         const login = async () => {
             try {
-                //getting the token
                 const { data } = await axios.post("http://localhost:8080/users/login", {
                     username: event.target.username.value,
                     password: event.target.password.value
                 });
                 
-                console.log(data);
-                // store the token for subsequent requests
+                console.log(`This is what we want: `, data.userid);
                 sessionStorage.setItem("token", data.token);
+                sessionStorage.setItem("userid", data.userid); // Store userid in session storage
                 navigate("/");
     
             } catch (error) {

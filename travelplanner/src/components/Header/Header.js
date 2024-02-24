@@ -1,23 +1,23 @@
 import "./Header.scss";
-
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
 
 export default function Header() {
+    const navigate = useNavigate();
     const { isLoggedIn, logout } = useAuth();
 
     return (
         <header className="header">
             <nav className="header__nav">
                 <ul className="header__navli">
-                    <li className="header__navli--item"><Link className="header__navli--link" to="/">Home</Link></li>
+                    <li className="header__navli--item" onClick={()=>navigate("/")}>Home</li>
                     {isLoggedIn ? (
                         <>
-                            <li className="header__navli--item"><Link className="header__navli--link"  to="/profile">My Profile</Link></li>
+                            <li className="header__navli--item" onClick={()=>navigate("/profile")}>My Profile</li>
                             <li className="header__navli--item" onClick={logout}>Log Out</li>
                         </>
                     ) : (
-                        <li className="header__navli--item"><Link  className="header__navli--link" to="/login">Log In</Link></li>
+                        <li className="header__navli--item" onClick={()=>navigate("/login")}>Log In</li>
                     )}
                 </ul>
             </nav>
