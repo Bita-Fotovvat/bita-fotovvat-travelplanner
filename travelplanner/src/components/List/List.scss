@@ -1,5 +1,5 @@
 @use "../../styles/partials/variables" as *;
-// @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/_global" as *;
 
@@ -7,8 +7,9 @@
     margin: auto;
     width: 95%;
     &__title{
-        font-size: 1.5rem;
-        padding-top: 3rem;
+        font-size: 1rem;
+        font-weight: 400;
+        padding-top: 1rem;
         padding-bottom: 1rem;
     }
 }
@@ -16,16 +17,52 @@
     &__options{
         height: 1rem;
     }
+    &__typetitle{
+        font-weight: 400;
+        padding-bottom: 0.5rem;
+    }
+    &__ratingtitle{
+        font-weight: 400;
+        padding-bottom: 0.5rem;
+    }
 }
 .card{
     &__container{
-        height: 500px; /* Adjust the height as needed */
+        height: 500px;
         overflow-y: auto;
     }
 }
-// .MuiFormLabel-root{
-//     display: none;
-// }
-// .MuiFormLabel-root, .MuiInputLabel-root, .MuiInputLabel-formControl, .MuiInputLabel-animated, .MuiInputLabel-shrink, .MuiInputLabel-sizeMedium, .MuiInputLabel-outlined, .MuiFormLabel-colorPrimary, .MuiFormLabel-filled, .MuiInputLabel-root, .MuiInputLabel-formControl, .MuiInputLabel-animated, .MuiInputLabel-shrink, .MuiInputLabel-sizeMedium, .MuiInputLabel-outlined{
-//     display: none;
-// }
+.MuiToolbar-root {
+    border-radius: 4px;
+}
+.MuiInputBase-root.MuiOutlinedInput-root {
+    font-family: "Nexa", sans-serif;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+ }
+ .MuiMenuItem-root.Mui-selected {
+    font-family: "Nexa", sans-serif;
+}
+.MuiMenuItem-root, .MuiMenuItem-gutters, .form__options, .MuiList-root.MuiMenu-list{
+    font-family: "Nexa", sans-serif;
+}
+.MuiCardMedia-root {
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    height: 10rem !important;
+    width: 90%;
+    border-radius: 4px;
+    // aspect-ratio: ;
+  }
+  .MuiCardContent-root > h2 {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  .MuiCardContent-root > h4 {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .MuiCardContent-root > .card__rating {
+    width: 1rem;
+  }
