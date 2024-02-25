@@ -11,7 +11,11 @@
         border-radius: 4px;
         @include tablet-and-desktop{
             width: 95%;
-            margin-top: -30px;
+            margin-top: -40px;
+        }
+        @include desktop{
+            width: 97%;
+            margin-top: -170px;
         }
     }
     // &__background{
@@ -24,7 +28,7 @@
        font-weight: 400;
        margin-bottom: 0.3rem;
        @include tablet-and-desktop{
-        font-size: 1rem;
+        font-size: 1.2rem;
         }
     }
 
@@ -50,12 +54,16 @@
             margin-top: 0.5rem;
             margin-left: 4.5rem;
             height: 5.5vh;
+            width: 100%;
         }
         &::placeholder{
             font-size: 0.8rem;
             font-family: "Nexa",sans-serif;
             font-weight: 400;
             padding-left: 0.5rem;
+            @include tablet-and-desktop{
+                font-size: 1rem;
+            }
         }
     }
     &__box{

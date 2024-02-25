@@ -6,11 +6,22 @@
 .list{
     margin: auto;
     width: 95%;
+    @include desktop{
+        margin: 0;
+        background-color: white;
+        padding-left: 1rem;
+    }
     &__title{
         font-size: 1rem;
         font-weight: 400;
         padding-top: 1rem;
         padding-bottom: 1rem;
+        @include tablet-and-desktop{
+            font-size: 1.5rem;
+        }
+        @include desktop{
+            padding-top: 0;
+        }
     }
 }
 .form{
@@ -46,17 +57,3 @@
 .MuiMenuItem-root, .MuiMenuItem-gutters, .form__options, .MuiList-root.MuiMenu-list{
     font-family: "Nexa", sans-serif;
 }
-
-//   .MuiCardContent-root > h2 {
-    // font-weight: 600;
-    // font-size: 1.2rem;
-    // padding-bottom: 0.5rem;
-//   }
-//   .MuiCardContent-root > h4 {
-//     font-weight: 600;
-//     font-size: 1rem;
-//     // padding-bottom: 0.5rem;
-//   }
-//   .MuiCardContent-root > .card__rating {
-//     width: 1rem;
-//   }

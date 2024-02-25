@@ -1,5 +1,5 @@
 @use "../../styles/partials/variables" as *;
-// @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/_global" as *;
 
@@ -16,6 +16,12 @@
     }
     @media (min-width: 900px) {
         height: 500px;
+    }
+    @include desktop{
+        margin: 0;
+        margin-left: 1.2rem;
+        width: 800px;
+        height: 615px;
     }
 }
 .marker{

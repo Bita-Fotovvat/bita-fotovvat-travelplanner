@@ -1,0 +1,15 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/_global" as *;
+
+.maplistparent{
+    @include desktop{
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 3rem;
+    }
+}

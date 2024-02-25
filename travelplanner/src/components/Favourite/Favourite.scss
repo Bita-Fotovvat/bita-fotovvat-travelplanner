@@ -1,10 +1,29 @@
 @use "../../styles/partials/variables" as *;
-// @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/_global" as *;
 
 .favourite{
     &__section{
-        border: 1px solid blue;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid lightgray;
+    }
+}
+.category{
+    &__parent{
+        margin-bottom: 2rem;
+    }
+}
+.delete__button{
+    border: 1px solid rgb(223, 221, 221);
+    background-color: rgb(223, 221, 221);
+    font-family: "Nexa", sans-serif;
+    width: 90%;
+    height: 1.5rem;
+    font-weight: 600;
+    border-radius: 4px;
+    &:hover{
+        background-color: rgb(20, 125, 173);
+        border: 1px solid rgb(33, 115, 215);
     }
 }

@@ -62,12 +62,13 @@ export default function DashboardPage() {
 
     return (
         <main className="profile">
-            <h1 className="profile__title"> Profile </h1>
-            <p className="profile__greeting">Welcome, {user.name}!</p>
-            <h3 className="profile__favheader">Your Favourites: </h3>
-            <div className="profile__favourites">
+            <section className="profile__container">
+                <div className="profile__imageholder"></div>
+                    <h1 className="profile__title"> Profile </h1>
+                    <p className="profile__greeting">Welcome, {user.name}!</p>
+                    <h3 className="profile__favheader">Your Favourites: </h3>
                 <FavouritesList />
-            </div>
+            </section>
             <button  className="profile__logout" onClick={handleLogout}>
                 Log out
             </button>

@@ -31,7 +31,7 @@ export default function HomePage(){
       })
     }, []);
   
-    ////////////hfhfgf
+    ////////////!!!!!!!!!!!
         useEffect(()=>{
           const filteredPlaces = places.filter((place)=> place.rating > rating) //Number(place.rating)
           setFilteredPlaces(filteredPlaces);
@@ -83,13 +83,15 @@ return(
   <>
   <Greeting/>
   <SearchBar />
-    <Map
-    places={filteredPlaces.length ? filteredPlaces : places}
-    setChildClicked={setChildClicked}/>
-    <List 
-    places={filteredPlaces.length ? filteredPlaces : places}
-    childClicked={childClicked}/>
-    isLoading={isLoading}
+    <section className="maplistparent">
+      <Map
+        places={filteredPlaces.length ? filteredPlaces : places}
+        setChildClicked={setChildClicked}/>
+      <List 
+        places={filteredPlaces.length ? filteredPlaces : places}
+        childClicked={childClicked}/>
+        {/* isLoading={isLoading} */}
+      </section>
   </>
   )
 }

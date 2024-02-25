@@ -1,37 +1,51 @@
 @use "../../styles/partials/variables" as *;
-// @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/_global" as *;
 
 .profile{
-    background-image: url(../../assets/images/hero.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-bottom: 3rem;
+    &__container{
+
+    }
+    &__parent{
+        background-color: white;
+    }
+    &__imageholder{
+        height: 200px;
+        width: 100%;
+        background-size: cover;
+        background-image: url(../../assets/images/background.jpg);
+    }
     &__title{
+        margin-top: -200px;
         font-size: 1.5rem;
         color: white;
         text-align: center;
         padding-top: 2rem;
         padding-bottom:  1rem;
+        text-shadow: 1px 1px 1px $text-shadow;
     }
     &__greeting{
         font-size: 1rem;
         color: white;
         text-align: center;
         padding-bottom: 2rem;
+        text-shadow: 1px 1px 1px $text-shadow;
     }
     &__favheader{
         color: white;
         text-align: center;
         padding-bottom: 2rem;
+        text-shadow: 1px 1px 1px $text-shadow;
     }
     &__favourites{
-        width: 60vw;
+        width: 90%;
+        border-radius: 4px;
         height: 40vh;
         margin: auto;
-        background-color: rgb(177, 221, 223);
+        background-color: white;
         margin-bottom: 3rem;
+        display: block;
     }
     &__logout{
         margin-top: 2rem;
