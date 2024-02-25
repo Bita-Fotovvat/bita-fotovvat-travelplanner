@@ -28,43 +28,43 @@ export default function List({childClicked }){
     useEffect(() => {
         if (childClicked !== null && places?.length > 0) {
             const clickedPlace = places[childClicked];
-            const otherPlaces = places.filter((_, index) => index !== childClicked);
+            const otherPlaces = places?.filter((_, index) => index !== childClicked);
             setDisplayedPlaces([clickedPlace, ...otherPlaces]);
         } else {
             setDisplayedPlaces(places);
         }
     }, [childClicked, places]);///////////////////اینجا length داریم
-    const handleSaveToFavourites = async (place) => {
-        // console.log(place.category.name);
-        // console.log(place.name);
-        // console.log(place.address);
-        // console.log(place.phone);
-        // console.log(user);
-        if (!isLoggedIn) {
-            alert('You must be logged in to save to favourites.');
-            return;
-        }
-        const payload = {
-            category: place.category?.name || 'Unknown', // Assuming 'category' might be an object with a 'name' property
-            name: place.name || 'Unknown',
-            address: place.address || 'No address provided',
-            phone: place.phone || 'No phone number provided'
-        };
-        try {
-            const response = await axios.post(`http://localhost:8080/saveditems/${userId}`, payload);
-            if (response.status === 201) { // Assuming 201 Created is the success status code from your backend
-                alert("Your save was successful!");
-            } else {
-                // If the server responds with a status code outside the 2xx range, log the response
-                console.error('Failed to save to favourites:', response);
-                alert('Failed to save to favourites. Please try again.');
-            }
-        } catch (error) {
-            // Log the error object for debugging purposes
-            console.error('Error saving to favourites:', error);
-            alert('An error occurred while saving to favourites. Please try again.');
-        }
-    };
+    // const handleSaveToFavourites = async (place) => {
+    //     // console.log(place.category.name);
+    //     // console.log(place.name);
+    //     // console.log(place.address);
+    //     // console.log(place.phone);
+    //     // console.log(user);
+    //     if (!isLoggedIn) {
+    //         alert('You must be logged in to save to favourites.');
+    //         return;
+    //     }
+    //     const payload = {
+    //         category: place.category?.name || 'Unknown', // Assuming 'category' might be an object with a 'name' property
+    //         name: place.name || 'Unknown',
+    //         address: place.address || 'No address provided',
+    //         phone: place.phone || 'No phone number provided'
+    //     };
+    //     try {
+    //         const response = await axios.post(`http://localhost:8080/saveditems/${userId}`, payload);
+    //         if (response.status === 201) { // Assuming 201 Created is the success status code from your backend
+    //             alert("Your save was successful!");
+    //         } else {
+    //             // If the server responds with a status code outside the 2xx range, log the response
+    //             console.error('Failed to save to favourites:', response);
+    //             alert('Failed to save to favourites. Please try again.');
+    //         }
+    //     } catch (error) {
+    //         // Log the error object for debugging purposes
+    //         console.error('Error saving to favourites:', error);
+    //         alert('An error occurred while saving to favourites. Please try again.');
+    //     }
+    // };
         
     return(
         <div className="list">
@@ -92,8 +92,8 @@ export default function List({childClicked }){
                         <MenuItem value={4.5}>Above 4.5</MenuItem>
                     </Select>
                 </FormControl>
-                <div className="card__container">
-                    <section className="card__item">
+                <div className="cardli__container">
+                    <section className="cardli__item">
                         {displayedPlaces?.map((place, i)=>(    /////places=>displayedPlaces////NPP
                             <Grid item key={i}>
                                 <PlaceDetails
@@ -101,11 +101,11 @@ export default function List({childClicked }){
                                 selected={Number(childClicked)=== i }
                                 refProp={elRefs[i]}
                                 />
-                                {isLoggedIn && (
+                                {/* {isLoggedIn && (
                                     <button onClick={(e) => handleSaveToFavourites(place)}>
                                     + Save to My Favourites
                                     </button>
-                                )}
+                                )} */}
                             </Grid>
                         ))}
                     </section>

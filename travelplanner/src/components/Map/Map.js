@@ -47,7 +47,7 @@ export default function Map({setChildClicked}){
                     >
                        {
                         !isDesktop ? (
-                            <LocationOnOutlinedIcon />
+                            <LocationOnOutlinedIcon color="primary" fontsize="large"/>
                         ) : (
                             <div className="marker__cards">
                                 <h4 className="marker__title" gutterBottom>{place.name}</h4>

@@ -26,7 +26,7 @@
         padding-bottom: 0.5rem;
     }
 }
-.card{
+.cardli{
     &__container{
         height: 500px;
         overflow-y: auto;
@@ -46,23 +46,17 @@
 .MuiMenuItem-root, .MuiMenuItem-gutters, .form__options, .MuiList-root.MuiMenu-list{
     font-family: "Nexa", sans-serif;
 }
-.MuiCardMedia-root {
-    background-size: cover;
-    background-position: center;
-    margin: auto;
-    height: 10rem !important;
-    width: 90%;
-    border-radius: 4px;
-    // aspect-ratio: ;
-  }
-  .MuiCardContent-root > h2 {
-    font-weight: 600;
-    font-size: 1.2rem;
-  }
-  .MuiCardContent-root > h4 {
-    font-weight: 600;
-    font-size: 1rem;
-  }
-  .MuiCardContent-root > .card__rating {
-    width: 1rem;
-  }
+
+//   .MuiCardContent-root > h2 {
+    // font-weight: 600;
+    // font-size: 1.2rem;
+    // padding-bottom: 0.5rem;
+//   }
+//   .MuiCardContent-root > h4 {
+//     font-weight: 600;
+//     font-size: 1rem;
+//     // padding-bottom: 0.5rem;
+//   }
+//   .MuiCardContent-root > .card__rating {
+//     width: 1rem;
+//   }
