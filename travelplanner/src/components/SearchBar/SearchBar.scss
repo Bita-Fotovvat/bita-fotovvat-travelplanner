@@ -4,40 +4,58 @@
 @use "../../styles/partials/_global" as *;
 
 .searchbar{
-    &__background{
-        // width: 100%;
+    &__container{
+        width: 94.5%;
+        margin: auto;
+        margin-top: -8px;
+        border-radius: 4px;
+        @include tablet-and-desktop{
+            width: 95%;
+            margin-top: -30px;
+        }
     }
+    // &__background{
+    //     // width: 100%;
+    // }
     &__label{
         padding-top: 0.2rem;
-       color: $color-one;
-       font-size: 0.9rem;
-       font-weight: 600;
+       color: $text-darkgray;
+       font-size: 1rem;
+       font-weight: 400;
        margin-bottom: 0.3rem;
        @include tablet-and-desktop{
         font-size: 1rem;
+        }
     }
-    }
+
+    .css-hyum1k-MuiToolbar-root {
+        height: 5rem;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+      }
+
+
     &__input{
         width: 135%;
         height: 4vh;
         border-radius: 4px;
-        border: 2px solid $color-one;
+        border: 1px solid lightgray;
         background-image: url(../../assets/icons/search.svg);
         background-repeat: no-repeat;
         background-position: 7px;
         padding-left: 1.875rem;
         font-size: 0.75rem;
+        @include tablet-and-desktop{
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            margin-left: 4.5rem;
+            height: 5.5vh;
+        }
         &::placeholder{
             font-size: 0.8rem;
-            font-weight: 600;
+            font-family: "Nexa",sans-serif;
+            font-weight: 400;
             padding-left: 0.5rem;
-            @include tablet-and-desktop{
-                font-size: 0.9rem;
-            }
-        }
-        @include tablet-and-desktop{
-            margin-left: 1rem;
-            height: 5.5vh;
         }
     }
     &__box{

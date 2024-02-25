@@ -1,5 +1,6 @@
 import "./Favourite.scss";
 
+
 export default function Favourite(props){
     return(
         <>

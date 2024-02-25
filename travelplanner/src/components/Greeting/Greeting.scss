@@ -1,0 +1,47 @@
+@use "../../styles/partials/variables" as *;
+// @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/_global" as *;
+
+.hero{
+    &__container{
+        height: 17rem;
+        background-image: url("../../assets/images/hero.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        @include tablet-and-desktop{
+            height: 23rem;
+        }
+    }
+    &__title{
+        font-size: 1.9rem;
+        font-weight: 400;
+        padding-top: 2rem;
+        padding-left: 2rem;
+        color: white;
+        text-shadow: 1px 1px 1px #3d3d3d;
+        @include tablet-and-desktop{
+            font-size: 2rem;
+            padding-top: 5rem;
+            // padding-right: 5rem;
+            padding-left: 5rem;
+        }
+    }
+    &__content{
+        // display: no;
+        padding-right: 2rem;
+        padding-top: 2rem;
+        padding-left: 2rem;
+        font-size: 1rem;
+        color: white;
+        text-shadow: 1px 1px 1px #3d3d3d;
+        @include tablet-and-desktop{
+            padding-top: 3rem;
+            padding-left: 5rem;
+            padding-right: 5rem;
+            font-size: 1.3rem;
+            line-height: 2.5rem;
+            font-weight: 400;
+        }
+    }
+}

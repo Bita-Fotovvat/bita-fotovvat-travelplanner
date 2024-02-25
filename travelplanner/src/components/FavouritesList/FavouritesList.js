@@ -57,10 +57,11 @@ export default function FavouritesList(){
         }
         try {
           // Use the userId in the request URL to fetch only the favourites for this user
-          const response = await axios.get(`http://localhost:8080/users/${userId}/saveditems`);
+          const response = await axios.get(`http://localhost:8080/saveditems/${userId}`);
           console.log(response);
           if (response.status === 200) {
               setFavourites(response.data);
+              // console.log(favourites);
           } else {
               console.error('Failed to fetch favourites:', response);
               alert('Failed to fetch favourites. Please try again.');

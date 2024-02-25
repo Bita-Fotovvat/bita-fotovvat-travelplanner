@@ -25,6 +25,7 @@ export default function SearchBar(){
     }
 
     return(
+        <section className="searchbar__container">
         <AppBar className="searchbar__background" position="static">
             <Toolbar>
                 {/* <h3>Travel Planner</h3> */}
@@ -38,5 +39,7 @@ export default function SearchBar(){
                 </Box>
             </Toolbar>
         </AppBar>
+        </section>
+
     );
 }

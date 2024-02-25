@@ -13,12 +13,20 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 import { getPlacesData } from '../../api/index'; //my api call 
 
-export default function List({childClicked , isLoading}){
+export default function List({childClicked }){
+    const {
+        bounds, setPlaces, isLoading, setIsLoading,
+    } = usePlaces();////////////////////3
+
+
+
     const {places, type, setType, rating, setRating} = usePlaces();
     const [elRefs, setElRefs] = useState([]);
     const { isLoggedIn, user } = useAuth();
-    const [favourite, setFavourite] = useState('');
+    const [favourite, setFavourite] = useState([]);
     const [displayedPlaces, setDisplayedPlaces] = useState([]);////////////NPP
+    const { userId } = useAuth();
+
 
     console.log({childClicked});
     // useEffect(() => {
@@ -32,6 +40,15 @@ export default function List({childClicked , isLoading}){
         setElRefs(refs);
     }, [places]);
 
+
+//////{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}
+
+////{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+
+
+
+
+
 //////////////////////////////////////NPP
 useEffect(() => {
     if (childClicked !== null && places.length > 0) {
@@ -44,6 +61,30 @@ useEffect(() => {
 }, [childClicked, places]);
 ////////////////NPP
 
+/////////////////////////////////////////////////////PPP
+// // Assume getPlacesData is your function to fetch data based on the selected type
+// const fetchData = async () => {
+//     setIsLoading(true); // Assuming you have a state to track loading status
+//     try {
+//         const data = await getPlacesData(type); // Fetch data for the current type
+//         const validatedData = data.map((place) => ({
+//             ...place,
+//             photo: place.photo || { images: { large: { url: 'defaultImageUrl.jpg' } } }, // Provide default photo if missing
+//         }));
+//         setDisplayedPlaces(validatedData);
+//     } catch (error) {
+//         console.error("Error fetching places data:", error);
+//         // Handle error (e.g., set an error message state here)
+//     } finally {
+//         setIsLoading(false); // Ensure loading state is reset whether the fetch succeeds or fails
+//     }
+// };
+
+// // Call fetchData when 'type' changes
+// useEffect(() => {
+//     fetchData();
+// }, [type]);
+////////////////////////////////////////////////////PPP
 
 
 
@@ -83,7 +124,7 @@ const payload = {
 };
 
 try {
-    const response = await axios.post('http://localhost:8080/saveditems', payload);
+    const response = await axios.post(`http://localhost:8080/saveditems/${userId}`, payload);
     if (response.status === 201) { // Assuming 201 Created is the success status code from your backend
         alert("Your save was successful!");
     } else {
@@ -101,8 +142,8 @@ try {
  
 ////////////////////////////////////
 
-
-
+console.log(places);
+console.log(displayedPlaces);
 
 
 
