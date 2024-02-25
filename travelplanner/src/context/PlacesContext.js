@@ -13,7 +13,7 @@ export const PlacesProvider = ({ children }) => {
   const [bounds, setBounds] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [type, setType] = useState('restaurants');
-  const [rating, setRating] = useState('');
+  const [rating, setRating] = useState([]);
 
   return (
     <PlacesContext.Provider value={{

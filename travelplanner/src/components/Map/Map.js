@@ -11,9 +11,9 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 //     setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
 // };
 
-export default function Map(){
+export default function Map({setChildClicked}){
 
-    const { setCoordinates, setBounds, coordinates, places, setChildClicked } = usePlaces();
+    const { setCoordinates, setBounds, coordinates, places} = usePlaces();
     // const coordinates = { lat: 0, lng: 0};
     // const API_KEY = AIzaSyAb4K_QXu9ej6UO3vTvykrZTMm31zRjQGA;
     const isDesktop = useMediaQuery('(min-width:600px)');
@@ -43,6 +43,7 @@ export default function Map(){
                     lat={Number(place.latitude)}
                     lng={Number(place.longitude)}
                     key={i}
+                    onClick={() => setChildClicked(i)} // Directly set childClicked on click if needed
                     >
                        {
                         !isDesktop ? (

@@ -7,7 +7,39 @@ import PhoneIcon from "../../assets/phone.png";
 
 export default function PlaceDetails({place, selected, refProp}){
 
+
+    if (!place) return null;
+
+    // Logic to scroll into view if selected
+    if (selected && refProp?.current) {
+        refProp.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // Define a fallback URL for the image
+    const fallbackImageUrl = 'https://toohotel.com/wp-content/uploads/2022/09/TOO_restaurant_Panoramique_vue_Paris_nuit_v2-scaled.jpg';
+
+
+    ///////////////////////////راه حل برای تغییر مسیر عکس و بقیه اطلاعات برای هتل
+    const imageUrl = place.photo?.images?.large?.url || fallbackImageUrl;
+    // let imageUrl;
+    // if (place.images && place.images.large && place.images.large.url) {
+    //     // For hotels
+    //     imageUrl = place.images.large.url;
+    // } else if (place.photo && place.photo.images && place.photo.images.large && place.photo.images.large.url) {
+    //     // For restaurants and attractions
+    //     imageUrl = place.photo.images.large.url;
+    // } else {
+    //     // Fallback image URL
+    //     imageUrl = 'https://toohotel.com/wp-content/uploads/2022/09/TOO_restaurant_Panoramique_vue_Paris_nuit_v2-scaled.jpg';
+    // }
+
+
+
+
+
+
     if(selected) refProp?.current?.scrollIntoView({ behavior:"smooth", block:"start"}) //
+    
 
     return(
         <>
