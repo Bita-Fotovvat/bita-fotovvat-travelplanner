@@ -8,17 +8,11 @@ export default function DashboardPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
 
-
-
     useEffect(() => {
-        //get a token from sessionstorage
         const token = sessionStorage.getItem("token");
-
         if (token) {
-            //tell the app user is logged in
             setIsLoggedIn(true);
         }
-
         const getCurrentUser = async () => {
             try {
                 const { data } = await axios.get("http://localhost:8080/users/profile", {
@@ -32,17 +26,13 @@ export default function DashboardPage() {
                 console.log(error);
             }
         }
-
         getCurrentUser();
-
     }, []);
-
     const handleLogout = () => {
         sessionStorage.removeItem("token");
         setUser(null);
         setIsLoggedIn(false);
     };
-
     if (!isLoggedIn) {
         return (
             <main> 
@@ -51,7 +41,6 @@ export default function DashboardPage() {
             </main>
         )
     }
-
     if (!user) {
         return (
             <main> 

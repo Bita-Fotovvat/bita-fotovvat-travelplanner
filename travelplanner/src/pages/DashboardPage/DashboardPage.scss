@@ -4,17 +4,11 @@
 @use "../../styles/partials/_global" as *;
 
 .profile{
-    &__container{
-
-    }
-    &__parent{
-        background-color: white;
-    }
     &__imageholder{
         height: 200px;
         width: 100%;
         background-size: cover;
-        background-image: url(../../assets/images/background.jpg);
+        background-image: url(../../assets/images/heroimg.png);
     }
     &__title{
         margin-top: -200px;
@@ -52,7 +46,7 @@
         display: block;
         margin: auto;
         border-radius: 4px;
-        border: 1px solid rgb(30, 124, 124);
+        border: 1px solid rgb(23, 110, 168);
         background-color: rgb(30, 124, 124);
         color: white;
         font-size: 1rem;

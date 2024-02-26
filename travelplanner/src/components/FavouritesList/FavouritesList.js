@@ -7,35 +7,48 @@ import { useAuth } from '../../context/AuthContext';
 export default function FavouritesList(){
   const [favourites, setFavourites] = useState([]);
   const { userId } = useAuth();
-      
-    useEffect(() => {
-      const fetchFavourites = async () => {
-        if (!userId) {
-            // alert('You must be logged in to view favourites.');
-            return;
+
+  const handleDeleteFavourites = async (id) => {
+    try {
+        const response = await axios.delete(`http://localhost:8080/saveditems/${userId}/${id}`);
+        console.log(`Request URL: http://localhost:8080/saveditems/${userId}/${id}`);
+        if (response.status === 204) {
+            alert("Your delete was successful!");
+            setFavourites(currentFavourites => currentFavourites.filter(favourite => favourite.id !== id));
+        } else {
+            console.error('Failed to delete the item:', response);
+            alert('Failed to save to delete the item. Please try again.');
         }
-        try {
-          const response = await axios.get(`http://localhost:8080/saveditems/${userId}`);
-          // console.log(response);
-          if (response.status === 200) {
-              setFavourites(response.data);
-              // console.log(favourites);
-          } else {
-              console.error('Failed to fetch favourites:', response);
-              alert('Failed to fetch favourites. Please try again.');
-          }
-        } catch (error) {
-              console.error('Error fetching favourites:', error);
-              alert('An error occurred while fetching favourites. Please try again.');
+    } catch (error) {
+        console.error('Error deleting:', error);
+        alert('An error occurred while deleting to favourites. Please try again.');
+    }
+  };
+  useEffect(() => {
+    const fetchFavourites = async () => {
+      if (!userId) {
+          return;
+      }
+      try {
+        const response = await axios.get(`http://localhost:8080/saveditems/${userId}`);
+        if (response.status === 200) {
+            setFavourites(response.data);
+        } else {
+            console.error('Failed to fetch favourites:', response);
+            alert('Failed to fetch favourites. Please try again.');
         }
-      };
-          fetchFavourites();
-    }, [userId]);
+      } catch (error) {
+            console.error('Error fetching favourites:', error);
+            alert('An error occurred while fetching favourites. Please try again.');
+      }
+    };
+      fetchFavourites();
+  }, [userId]);
 
   return (
     <div className="favourite__container">
       {favourites.map(favourite => (
-        <Favourite key={favourite.id} favourite={favourite} />
+        <Favourite key={favourite.id} favourite={favourite} onDelete={handleDeleteFavourites}/>
       ))}
     </div>
   );
