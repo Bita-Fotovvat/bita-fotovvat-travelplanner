@@ -46,11 +46,16 @@
         display: block;
         margin: auto;
         border-radius: 4px;
-        border: 1px solid rgb(23, 110, 168);
-        background-color: rgb(30, 124, 124);
+        border: 1px solid $button-color;
+        background-color: $button-color;
         color: white;
         font-size: 1rem;
         width: 8rem;
         height: 2rem;
+        margin-bottom: 3rem;
+        &:hover{
+            border: 1px solid $button-color-hover;
+            background-color: $button-color-hover;
+        }
     }
 }

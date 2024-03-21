@@ -3,6 +3,7 @@ import Favourite from "../Favourite/Favourite";
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
 
 export default function FavouritesList(){
   const [favourites, setFavourites] = useState([]);
@@ -13,15 +14,15 @@ export default function FavouritesList(){
         const response = await axios.delete(`http://localhost:8080/saveditems/${userId}/${id}`);
         console.log(`Request URL: http://localhost:8080/saveditems/${userId}/${id}`);
         if (response.status === 204) {
-            alert("Your delete was successful!");
+          toast("Your delete was successful!");
             setFavourites(currentFavourites => currentFavourites.filter(favourite => favourite.id !== id));
         } else {
             console.error('Failed to delete the item:', response);
-            alert('Failed to save to delete the item. Please try again.');
+            toast('Failed to save to delete the item. Please try again.');
         }
     } catch (error) {
         console.error('Error deleting:', error);
-        alert('An error occurred while deleting to favourites. Please try again.');
+        toast('An error occurred while deleting to favourites. Please try again.');
     }
   };
   useEffect(() => {
@@ -35,11 +36,11 @@ export default function FavouritesList(){
             setFavourites(response.data);
         } else {
             console.error('Failed to fetch favourites:', response);
-            alert('Failed to fetch favourites. Please try again.');
+            toast('Failed to fetch favourites. Please try again.');
         }
       } catch (error) {
             console.error('Error fetching favourites:', error);
-            alert('An error occurred while fetching favourites. Please try again.');
+            toast('An error occurred while fetching favourites. Please try again.');
       }
     };
       fetchFavourites();
@@ -53,3 +54,4 @@ export default function FavouritesList(){
     </div>
   );
 }
+

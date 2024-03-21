@@ -7,6 +7,7 @@ import PhoneIcon from "../../assets/icons/phone.png";
 import { useAuth } from '../../context/AuthContext';
 import {useState, useEffect, createRef} from 'react';
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 export default function PlaceDetails({place, selected, refProp}){
     const [elRefs, setElRefs] = useState([]);
@@ -18,7 +19,7 @@ export default function PlaceDetails({place, selected, refProp}){
 
     const handleSaveToFavourites = async (place) => {
         if (!isLoggedIn) {
-            alert('You must be logged in to save to favourites.');
+            toast('You must be logged in to save to favourites.');
             return;
         }
         const payload = {
@@ -30,14 +31,14 @@ export default function PlaceDetails({place, selected, refProp}){
         try {
             const response = await axios.post(`http://localhost:8080/saveditems/${userId}`, payload);
             if (response.status === 201) {
-                alert("Your save was successful!");
+                toast("Your save was successful");
             } else {
                 console.error('Failed to save to favourites:', response);
-                alert('Failed to save to favourites. Please try again.');
+                toast('Failed to save to favourites. Please try again.');
             }
         } catch (error) {
             console.error('Error saving to favourites:', error);
-            alert('An error occurred while saving to favourites. Please try again.');
+            toast('An error occurred while saving to favourites. Please try again.');
         }
     };
     
@@ -87,3 +88,5 @@ export default function PlaceDetails({place, selected, refProp}){
         </Card>
     );
 }
+
+

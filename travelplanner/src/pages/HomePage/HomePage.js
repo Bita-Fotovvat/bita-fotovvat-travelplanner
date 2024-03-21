@@ -54,7 +54,7 @@ export default function HomePage(){
         <List 
           places={filteredPlaces.length ? filteredPlaces : places}
           childClicked={childClicked}/>
-          isLoading={isLoading}
+          {/* isLoading={isLoading} */}
       </section>
   </>
   )

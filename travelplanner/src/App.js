@@ -5,7 +5,8 @@ import Header from './components/Header/Header';
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
 
@@ -13,6 +14,7 @@ return (
   <AuthProvider>
     <PlacesProvider>
       <BrowserRouter>
+        <ToastContainer />
         <Header/>
         <Routes>
           <Route path="/" element={<HomePage />} />

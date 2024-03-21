@@ -105,3 +105,16 @@
   .css-16cvb1l-MuiCardMedia-root{
     margin-top: 1rem;
   }
+  .form__options.MuiMenuItem-root{
+    font-family: "Nexa", sans-serif;
+  }
+  .MuiMenuItem-root[data-value="attractions"] {
+    padding: 1rem;
+  }
+  .MuiMenuItem-root[data-value="hotels"] {
+    padding: 1rem;
+  }
+  .MuiMenuItem-root[data-value="restaurants"] {
+    padding: 1rem;
+  }
+  

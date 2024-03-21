@@ -1,28 +1,23 @@
 import "./Map.scss";
 import GoogleMapReact from 'google-map-react';
 import { usePlaces } from '../../context/PlacesContext';
-import {Paper, Typography, useMediaQuery} from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import Rating from "@mui/material/Rating";
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 
 
-// const handleChange = (e) => {
-//     setCoordinates({ lat: e.center.lat, lng: e.center.lng });
-//     setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
-// };
-
 export default function Map({setChildClicked}){
 
     const { setCoordinates, setBounds, coordinates, places} = usePlaces();
-    // const coordinates = { lat: 0, lng: 0};
-    // const API_KEY = AIzaSyAb4K_QXu9ej6UO3vTvykrZTMm31zRjQGA;
     const isDesktop = useMediaQuery('(min-width:600px)');
+    const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+    const fallbackImageUrl = 'https://resizer.otstatic.com/v2/photos/wide-mlarge/3/59976967.webp';
 
     return(
         <>
         <div className="map__container">
             <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyAb4K_QXu9ej6UO3vTvykrZTMm31zRjQGA' }}
+                bootstrapURLKeys={{ key: googleMapsApiKey }}
                 defaultCenter={coordinates}
                 center={coordinates}
                 defaultZoom={14}
@@ -43,7 +38,7 @@ export default function Map({setChildClicked}){
                     lat={Number(place.latitude)}
                     lng={Number(place.longitude)}
                     key={i}
-                    onClick={() => setChildClicked(i)} // Directly set childClicked on click if needed
+                    onClick={() => setChildClicked(i)}
                     >
                        {
                         !isDesktop ? (
@@ -53,7 +48,7 @@ export default function Map({setChildClicked}){
                                 <h4 className="marker__title" gutterBottom>{place.name}</h4>
                                 <img 
                                 className="marker__img"
-                                src={place.photo ? place.photo.images.large.url : 'https://toohotel.com/wp-content/uploads/2022/09/TOO_restaurant_Panoramique_vue_Paris_nuit_v2-scaled.jpg'}
+                                src={place.photo ? place.photo.images.large.url : fallbackImageUrl}
                                 alt={place.name}
                                 />
                                 <Rating className="marker__rating" size="small" value={Number(place.rating)} readOnly/>
@@ -67,3 +62,4 @@ export default function Map({setChildClicked}){
         </>
     );
 }
+
